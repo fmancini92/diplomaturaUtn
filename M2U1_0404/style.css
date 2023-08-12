@@ -1,0 +1,53 @@
+h3{
+    color:blue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+label{
+    font-size:20px;
+}
+
+ul{
+    font-size: 30px;
+
+}
+
+body{
+    background: rgb(238,174,202);
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 40px;
+    color: blueviolet;
+}
+
+#sub{
+    color: chartreuse;
+}
+
+.form-control{
+    background-color: red;
+}
+
+a:hover{
+    color: red;
+}
+.container{
+    
+    width: 500px;
+    height: 150px;
+    border: 15px solid royalblue;
+    padding: 25px;
+    margin: 10px;
+    text-align: center;
+
+    border-radius: 10px 20px 40px 80px;
+    box-shadow: 10px 10px 5px #000000;
+
+}
+
+ol li{
+    font-family: 'Lobster', cursive;
+}

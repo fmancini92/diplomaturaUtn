@@ -1,0 +1,50 @@
+#contenedor{
+    width: 600px;
+    height: 100px;
+    border: 1px solid #000;
+    margin: 50%;
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+
+#red {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    color: white;
+    
+   
+    
+}
+
+#blue {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    color: white;
+    
+    
+}
+
+#green {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    color: white;
+    
+   
+    
+}
+
+.hijo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

@@ -1,0 +1,193 @@
+1) ¿Cuáles son los nombres y la ocupación de cada uno de los empleados? 
+
+SELECT  `nombre`, `trabajo` FROM `empleados`;
+
+
+nombre		trabajo	
+Juan		Programador Senior	
+Gonzalo		Programador Senior	
+Ana		Desarrollador Web	
+Maria		Desarrollador Web	
+Alfredo		Programador	
+Juan		Programador	
+Eduardo		Programador	
+Alejandro	Programador	
+Hernan		Especialista Multimedia	
+Paublo		Especialista Multimedia	
+Arturo		Especialista Multimedia	
+Jimena		Diseñador Web Senior	
+Roberto		Administrador de Sistemas	
+Daniel		Administrador de Sistemas	
+Miguel		Ejecutivo de Ventas Senior	
+Monica		Ejecutivo de Ventas	
+Alicia		Ejecutivo de Ventas	
+Jose		Ejecutivo de Ventas	
+Sabrina		Gerente de Soporte Tecnico	
+Pedro		Gerente de Finanzas	
+Mariano		Presidente	
+
+
+2) ¿Cuál es el nombre y la edad de cada uno de los empleados?
+
+SELECT `nombre`, `edad` FROM `empleados`;
+
+
+nombre		edad	
+Juan		32	
+Gonzalo		32	
+Ana		27	
+Maria		26	
+Alfredo		31	
+Juan		34	
+Eduardo		25	
+Alejandro	32	
+Hernan		33	
+Paublo		43	
+Arturo		32	
+Jimena		32	
+Roberto		35	
+Daniel		34	
+Miguel		36	
+Monica		30	
+Alicia		27	
+Jose		27	
+Sabrina		32	
+Pedro		36	
+Mariano		28	
+
+
+3) ¿Cuál es el nombre y la edad de todos los programadores?
+
+SELECT `nombre`, `edad` FROM `empleados` WHERE `trabajo` LIKE '%programador%';
+
+
+nombre		edad	
+Juan		32	
+Gonzalo		32	
+Alfredo		31	
+Juan		34	
+Eduardo		25	
+Alejandro	32	
+
+
+4) ¿Cuáles son los empleados de mas de 30 años?
+
+SELECT `nombre`, `apellido`, `edad` FROM `empleados` WHERE `edad` >= 30 ORDER BY `edad` DESC;
+
+
+nombre	apellido	edad   	
+Paublo	Simon		43	
+Pedro	Campion		36	
+Miguel	Harper		36	
+Roberto	Luis		35	
+Juan	Aguero		34	
+Daniel	Gutierrez	34	
+Hernan	Rosso		33	
+Sabrina	Allende		32	
+Jimena	Cazado		32	
+Arturo	Hernandez	32	
+Alejandro	Nanda	32	
+Gonzalo	Pillai		32	
+Juan	Hagan		32	
+Alfredo	Fernandez	31	
+Monica	Sanchez		30	
+
+
+5) ¿Cuál es el apellido y el mail de los empleados llamados Juan?
+
+SELECT `apellido`, `email` FROM `empleados` WHERE `nombre` = 'Juan';
+
+
+apellido	email	
+Hagan		juan_hagan@bignet.com	
+Aguero		juan@bignet.com	
+
+
+6) ¿Cuál es el nombre de las personas que trabajan como Programadores o Desarrolladores Web?
+
+SELECT `nombre`, `trabajo` FROM `empleados` WHERE `trabajo` LIKE '%programador%' OR `trabajo` LIKE '%desarrollador%' ORDER by `edad` DESC;
+
+
+nombre		trabajo	
+Juan		Programador	
+Juan		Programador Senior	
+Gonzalo		Programador Senior	
+Alejandro	Programador	
+Alfredo		Programador	
+Ana		Desarrollador Web	
+Maria		Desarrollador Web	
+Eduardo		Programador	
+	
+
+7) Mostrar una lista (id_emp, nombre, apellido, trabajo) de las personas cuyo numero de empleado esté entre 15 y 20.
+
+SELECT `id_emp`, `nombre`, `apellido`, `trabajo` FROM `empleados` WHERE `id_emp` >= 15 AND `id_emp` <= 20;
+
+
+id_emp	nombre	apellido	trabajo	
+15	Miguel	Harper		Ejecutivo de Ventas Senior	
+16	Monica	Sanchez		Ejecutivo de Ventas	
+17	Alicia	Simlai		Ejecutivo de Ventas	
+18	Jose	Iriarte		Ejecutivo de Ventas	
+19	Sabrina	Allende		Gerente de Soporte Tecnico	
+20	Pedro	Campion		Gerente de Finanzas	
+
+
+8) ¿Cuáles son los Programadores que ganan menos de $80000?
+
+SELECT `id_emp`, `nombre`, `apellido`, `trabajo`, `edad`, `salario`, `email` FROM `empleados` WHERE `trabajo` LIKE '%programador%' AND `salario` < 80000 ORDER BY `salario` DESC;
+
+
+id_emp	nombre		apellido	trabajo		edad	salario   	email	
+5	Alfredo		Fernandez	Programador	31	75000		af@bignet.com	
+7	Eduardo		Sacan		Programador	25	75000		eddie@bignet.com	
+8	Alejandro	Nanda		Programador	32	70000		alenanda@bignet.com	
+	
+
+
+9) ¿Cuáles son los Programadores que ganan entre $75000 y  $90000?
+
+SELECT `id_emp`, `nombre`, `apellido`, `trabajo`, `edad`, `salario`, `email` FROM `empleados` WHERE `trabajo` LIKE '%programador%' AND `salario` >= 75000 AND `salario` <= 90000 ORDER BY `salario` DESC;
+
+
+id_emp	nombre	apellido	trabajo		edad	salario   	email	
+6	Juan	Aguero		Programador	34	80000		juan@bignet.com	
+5	Alfredo	Fernandez	Programador	31	75000		af@bignet.com	
+7	Eduardo	Sacan		Programador	25	75000		eddie@bignet.com	
+
+
+10) ¿Cuáles son los trabajadores cuyo apellido comienza con S?
+
+SELECT `id_emp`, `nombre`, `apellido` FROM `empleados` WHERE `apellido` LIKE 's%';
+
+
+id_emp	nombre	apellido	
+7	Eduardo	Sacan	
+10	Paublo	Simon	
+16	Monica	Sanchez	
+17	Alicia	Simlai	
+
+
+11) ¿Cuáles son los trabajadores cuyo nombre termina en l?
+
+SELECT `id_emp`, `nombre`, `apellido` FROM `empleados` WHERE `nombre` LIKE '%l';
+
+
+id_emp	nombre	apellido	
+14	Daniel	Gutierrez	
+15	Miguel	Harper	
+
+12) Agregar un empleado con ID_empleado 22 con los siguientes datos: Francisco Perez,  Programador, 26 años, salario 90000, mail: francisco@bignet.com.
+
+INSERT INTO `empleados`(`id_emp`, `nombre`, `apellido`, `trabajo`, `edad`, `salario`, `email`) VALUES ('22','Francisco','Perez','Programador','26','90000','francisco@bignet.com')
+
+
+13) Borrar los datos de Hernan Rosso.
+
+DELETE FROM `empleados` WHERE `nombre` = 'Hernan' AND `apellido` = 'Rosso';
+
+
+14) Modificar el salario de Daniel Gutierrez a 90000.
+
+
+UPDATE `empleados` SET `salario`='90000' WHERE `nombre` = 'Daniel' AND `apellido` = 'Gutierrez';

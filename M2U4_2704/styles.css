@@ -1,0 +1,22 @@
+.container{
+    background-color: royalblue;
+    border: 1px solid #000;
+}
+
+.col{
+    border: 1px solid #000;
+}
+
+#imagen{
+    width: 50%;
+    height: 50%;
+    
+}
+
+#flex{
+    border: 2px solid #000;
+}
+
+.p-2{
+    border: 2px solid #000;
+}

@@ -1,0 +1,21 @@
+.container{
+    display: flex;
+}
+
+.cuadrado{
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+}
+
+#div1{
+    background-color: red;
+}
+
+#div2{
+    background-color: blue;
+}
+
+#div3{
+    background-color: green;
+}
