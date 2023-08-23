@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 const URIcuentas = 'http://localhost:8000/cuentas/'
 const URIclientes = 'http://localhost:8000/clientes/'
 
-
 export const ComponenteCrearSaldo = () => {
 
     const [numrem, setNumrem] = useState(0)
@@ -18,19 +17,19 @@ export const ComponenteCrearSaldo = () => {
     const [options, setOptions] = useState([]);
     const [selectedOption, setSelectedOption] = useState('')
 
-    
+    // obtengo el listado de clientes para el select del form
     const getClientes = async () => {
         await axios.get(URIclientes)
-        .then(response => {
-            setOptions(response.data)
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.log('Error:', error)
-        })
+            .then(response => {
+                setOptions(response.data)
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log('Error:', error)
+            })
     }
-    
-    
+
+    // crear saldo nuevo
     const CrearSaldo = async (e) => {
         e.preventDefault();
         const saldo = totalrem - efectivo - transferencia;
@@ -44,11 +43,12 @@ export const ComponenteCrearSaldo = () => {
                     saldo: saldo,
                     anulado: 0
                 })
-                navigate('/')
-            } catch (error) {  
+            navigate('/')
+        } catch (error) {
         }
     }
 
+    // llamo las a las funciones necesarias al cargar el componente
     useEffect(() => {
         getClientes()
     }, [])
@@ -111,7 +111,7 @@ export const ComponenteCrearSaldo = () => {
                             className="form-control"
                         />
                     </div>
-                    <button type="submit" className="btn btn-primary">Store</button>
+                    <button type="submit" className="btn btn-primary">Cargar</button>
                 </div>
             </form>
         </div>

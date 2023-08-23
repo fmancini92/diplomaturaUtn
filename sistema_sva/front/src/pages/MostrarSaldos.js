@@ -5,18 +5,17 @@ import { Link } from 'react-router-dom'
 const URI = 'http://localhost:8000/cuentas/'
 
 const ComponenteMostrarSaldos = () => {
-    
+
     const [saldos, setSaldos] = useState([])
-    
-    useEffect(() => {
-        mostrarSaldos()
-    }, [])
-    
+
+    // obtengo todos los saldos
     const mostrarSaldos = async () => {
         const res = await axios.get(URI)
         setSaldos(res.data)
+        console.log(res.data);
     }
     
+    // borro saldo del listado
     const borrarSaldo = async (id) => {
         try {
             await axios.delete(`${URI}${id}`)
@@ -26,7 +25,12 @@ const ComponenteMostrarSaldos = () => {
         }
     }
     
+    // llamo las a las funciones necesarias al cargar el componente
+    useEffect(() => {
+        mostrarSaldos()
+    }, [])
 
+    // vista
     return (
         <div className='container'>
             <div className='row'>
@@ -43,7 +47,7 @@ const ComponenteMostrarSaldos = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {saldos.map((saldo) =>(
+                            {saldos.map((saldo) => (
                                 <tr key={saldo.id}>
                                     <td>{saldo.id}</td>
                                     <td>{saldo.fecha}</td>
@@ -51,7 +55,8 @@ const ComponenteMostrarSaldos = () => {
                                     <td>{saldo.saldo}</td>
                                     <td>
                                         <Link to={`/editar/${saldo.id}`} className='btn btn-info'><i class="fa-solid fa-pen-to-square"></i> </Link>
-                                        <button onClick={()=>borrarSaldo(saldo.id)} className='btn btn-danger'><i class="fa-solid fa-trash"></i></button>
+                                        <button onClick={() => borrarSaldo(saldo.id)} className='btn btn-danger'><i class="fa-solid fa-trash"></i></button>
+                                        <Link to={`/cobrar/${saldo.id}`} className='btn btn-info'> Cobrar <i class="fa-solid fa-sack-dollar"></i> </Link>
                                     </td>
 
                                 </tr>
@@ -62,16 +67,12 @@ const ComponenteMostrarSaldos = () => {
                     </table>
                 </div>
             </div>
-            
+
         </div>
 
     )
 
 
 }
-
-
-
-
 
 export default ComponenteMostrarSaldos

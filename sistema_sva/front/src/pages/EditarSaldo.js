@@ -10,7 +10,6 @@ export const ComponenteEditarSaldo = () => {
     const {id} = useParams()
 
     // valores que se van a pasar al actualizar - valores ingresados por form
-    
     const [numrem, setNumRem] = useState(0)
     const [totalrem, setTotalRem] = useState(0)
     const [zona, setZona] = useState(0)
@@ -22,7 +21,7 @@ export const ComponenteEditarSaldo = () => {
     const [options, setOptions] = useState([]);
     const [selectedOption, setSelectedOption] = useState('')
     
-    
+    // obtengo datos de la cuenta con el ID
     const getCuentaById = useCallback( async () => {
         try {
             const res = await axios.get(URIcuentas + id)
@@ -35,7 +34,6 @@ export const ComponenteEditarSaldo = () => {
     }, [id])
     
     //consulto clientes para el select
-    
     const getClientes = async () => {
         await axios.get(URIclientes)
         .then(response => {
@@ -46,11 +44,6 @@ export const ComponenteEditarSaldo = () => {
             console.log('Error:', error)
         })
     }
-
-    useEffect(() => {
-        getCuentaById()
-        getClientes()
-    },[getCuentaById])
 
     // actualizar Saldo
     const actualizarSaldo = async (e) => {
@@ -66,20 +59,22 @@ export const ComponenteEditarSaldo = () => {
         })
         navigate('/')
     }
-
     
-    
+    //llamo las a las funciones necesarias al cargar el componente
+    useEffect(() => {
+        getCuentaById()
+        getClientes()
+    },[getCuentaById])
 
-
+    // vista
     return (
         <div>
-            <h2>Cobrar Saldo</h2>
+            <h2>Editar Saldo</h2>
             <form onSubmit={actualizarSaldo} >
                 <div className="mb-3 form-control">
                     <div>
                         <label className="form-label">Cliente</label>
                         <select
-                            id='optionSelect'
                             value={selectedOption}
                             onChange={(e) => setSelectedOption(e.target.value)}>
                             <option>Selecciona un cliente</option>

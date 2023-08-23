@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
 
-import ComponenteMostrarSaldos from './SaldosSva/MostrarSaldos';
+import ComponenteMostrarSaldos  from './pages/MostrarSaldos';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { ComponenteCrearSaldo } from './SaldosSva/CrearSaldo';
-import { ComponenteEditarSaldo } from './SaldosSva/EditarSaldo';
-import { ComponenteCobrarSaldo } from './SaldosSva/CobrarSaldo';
+import { ComponenteCrearSaldo } from './pages/CrearSaldo';
+import { ComponenteEditarSaldo } from './pages/EditarSaldo';
+import { ComponenteCobrarSaldo } from './pages/CobrarSaldo';
+import Header from './componentes/layout/Header';
+import Nav from '../src/componentes/layout/Nav';
+import Footer from '../src/componentes/layout/Footer'
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        
-      </header>
-
-
+      
+      <Header />
 
       <BrowserRouter>
+      <Nav/>
         <Routes>
           <Route path='/' element={<ComponenteMostrarSaldos></ComponenteMostrarSaldos>}/>
           <Route path='/nuevo' element={<ComponenteCrearSaldo></ComponenteCrearSaldo>}/>
@@ -27,7 +27,7 @@ function App() {
         </Routes>
       </BrowserRouter>
             
-      
+      <Footer/>
     </div>
   );
 }
