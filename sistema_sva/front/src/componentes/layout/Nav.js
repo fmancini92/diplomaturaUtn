@@ -8,7 +8,7 @@ const Nav = (props) => {
             <div>
                 <ul className="holder">
                     <li>
-                        <NavLink to="/" className={ ({ isActive }) => isActive ? "activo" : undefined }> Home </NavLink>
+                        <NavLink to="/saldos" className={ ({ isActive }) => isActive ? "activo" : undefined }> Home </NavLink>
                     </li>
                 </ul>
             </div>

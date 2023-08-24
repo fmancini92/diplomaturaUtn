@@ -18,7 +18,7 @@ function App() {
       <Nav/>
         <Routes>
           {/* <Route path='/' element={<}/> */}
-          <Route path='/mostrar' element={<ComponenteMostrarSaldos></ComponenteMostrarSaldos>}/>
+          <Route path='/saldos' element={<ComponenteMostrarSaldos></ComponenteMostrarSaldos>}/>
           <Route path='/nuevo' element={<ComponenteCrearSaldo></ComponenteCrearSaldo>}/>
           <Route path='/editar/:id' element={<ComponenteEditarSaldo></ComponenteEditarSaldo>}/>
           <Route path='/cobrar/:id' element={<ComponenteCobrarSaldo></ComponenteCobrarSaldo>}/>
