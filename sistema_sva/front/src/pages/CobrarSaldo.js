@@ -6,11 +6,9 @@ const URIcuentas = 'http://localhost:8000/cuentas/'
 
 export const ComponenteCobrarSaldo = () => {
     const { id } = useParams()
-
     const [saldo, setSaldo] = useState(0)
     const [efectivo, setEfectivo] = useState(0)
     const [transferencia, setTransferencia] = useState(0)
-
     const navigate = useNavigate()
 
     const [cuentas, setCuentas] = useState([])
@@ -70,9 +68,9 @@ export const ComponenteCobrarSaldo = () => {
 
     // vista
     return (
-        <div>
+        <div className="form"> 
             <h2>Cobrar Saldo</h2>
-            <form onSubmit={cobrarSaldo}>
+            <form onSubmit={cobrarSaldo} className="formulario">
                 <div>
                     {cuentas.find(cuenta => cuenta.id === Number(id)) && (
                         <div>

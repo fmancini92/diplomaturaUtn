@@ -61,7 +61,7 @@ export const ComponenteCrearSaldo = () => {
             <form onSubmit={CrearSaldo} className="formulario">
                 <div>
                     <div>
-                        <label className="form-label">Cliente</label>
+                        <label>Cliente</label>
                         <select onChange={(e) => setSelectedOption(e.target.value)}>
                             <option>Selecciona un cliente</option>
                             {options.map(option => (
