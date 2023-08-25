@@ -42,6 +42,7 @@ export const ComponenteCobrarSaldo = () => {
             try {
                 await axios.delete(`${URIcuentas}${id}`)
                 alert('Saldo en CERO (0)')
+                navigate('/saldos')
             } catch (error) {
                 console.error('Error:', error);
             }
