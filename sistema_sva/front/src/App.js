@@ -17,7 +17,6 @@ function App() {
       <BrowserRouter>
       <Nav/>
         <Routes>
-          {/* <Route path='/' element={<}/> */}
           <Route path='/saldos' element={<ComponenteMostrarSaldos></ComponenteMostrarSaldos>}/>
           <Route path='/nuevo' element={<ComponenteCrearSaldo></ComponenteCrearSaldo>}/>
           <Route path='/editar/:id' element={<ComponenteEditarSaldo></ComponenteEditarSaldo>}/>

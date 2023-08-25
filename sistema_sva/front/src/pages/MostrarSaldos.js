@@ -19,6 +19,7 @@ const ComponenteMostrarSaldos = () => {
     const borrarSaldo = async (id) => {
         try {
             await axios.delete(`${URI}${id}`)
+            alert('Registro Eliminado')
             mostrarSaldos()
         } catch (error) {
             console.error('Error:', error);

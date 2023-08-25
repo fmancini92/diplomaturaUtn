@@ -7,7 +7,7 @@ const URIclientes = 'http://localhost:8000/clientes/'
 
 
 export const ComponenteEditarSaldo = () => {
-    const {id} = useParams()
+    const { id } = useParams()
 
     // valores que se van a pasar al actualizar - valores ingresados por form
     const [numrem, setNumRem] = useState(0)
@@ -16,13 +16,13 @@ export const ComponenteEditarSaldo = () => {
     const [efectivo, setEfectivo] = useState(0)
     const [transferencia, setTransferencia] = useState(0)
     const navigate = useNavigate()
-    
+
     // guardo clientes y opciones del select
     const [options, setOptions] = useState([]);
     const [selectedOption, setSelectedOption] = useState('')
-    
+
     // obtengo datos de la cuenta con el ID
-    const getCuentaById = useCallback( async () => {
+    const getCuentaById = useCallback(async () => {
         try {
             const res = await axios.get(URIcuentas + id)
             setNumRem(res.data.num_rem)
@@ -32,39 +32,49 @@ export const ComponenteEditarSaldo = () => {
             console.error('Error:', error);
         }
     }, [id])
-    
+
     //consulto clientes para el select
     const getClientes = async () => {
         await axios.get(URIclientes)
-        .then(response => {
-            setOptions(response.data)
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.log('Error:', error)
-        })
+            .then(response => {
+                setOptions(response.data)
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log('Error:', error)
+            })
     }
 
     // actualizar Saldo
     const actualizarSaldo = async (e) => {
         const saldo = totalrem - efectivo - transferencia
         e.preventDefault()
-        await axios.put(URIcuentas + id, {
-            codcliente: selectedOption,
-            num_rem: numrem,
-            total_rem: totalrem,
-            zona: zona,
-            saldo: saldo,
-            anulado: 0
-        })
-        navigate('/')
+        try {
+            if (saldo > 0) {
+                await axios.put(URIcuentas + id, {
+                    codcliente: selectedOption,
+                    num_rem: numrem,
+                    total_rem: totalrem,
+                    zona: zona,
+                    saldo: saldo,
+                    anulado: 0
+                })
+                alert('Registro actualizado correctamente !')
+                navigate('/saldos')
+            } else {
+                alert('Saldo NEGATIVO !')
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            navigate('/saldos')
+        }
     }
-    
+
     //llamo las a las funciones necesarias al cargar el componente
     useEffect(() => {
         getCuentaById()
         getClientes()
-    },[getCuentaById])
+    }, [getCuentaById])
 
     // vista
     return (
@@ -89,10 +99,10 @@ export const ComponenteEditarSaldo = () => {
 
                     <div>
                         <label>N° de Remito</label>
-                        <input 
-                        value={numrem} 
-                        onChange={(e) => 
-                            setNumRem(e.target.value)} 
+                        <input
+                            value={numrem}
+                            onChange={(e) =>
+                                setNumRem(e.target.value)}
                             className="form-control"
                         />
                     </div>

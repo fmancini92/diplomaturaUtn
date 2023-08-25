@@ -43,8 +43,10 @@ export const ComponenteCrearSaldo = () => {
                     saldo: saldo,
                     anulado: 0
                 })
-            navigate('/')
+                alert("Registro creado correctamente !")
+            navigate('/saldos')
         } catch (error) {
+            alert('Registro NO CREADO, error: ', error)
         }
     }
 

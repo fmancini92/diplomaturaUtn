@@ -41,20 +41,28 @@ export const ComponenteCobrarSaldo = () => {
         if (NvoSaldo === 0) {
             try {
                 await axios.delete(`${URIcuentas}${id}`)
+                alert('Saldo en CERO (0)')
             } catch (error) {
                 console.error('Error:', error);
             }
         } else {
             try {
-                await axios.put(URIcuentas + id, {
-                    saldo: NvoSaldo
-                })
+                if (NvoSaldo > 0) {
+                    await axios.put(URIcuentas + id, {
+                        saldo: NvoSaldo
+                    })
+                    alert(`Saldo actualizado correctamente !`)
+                    navigate('/saldos')
+
+                } else {
+                    alert('Saldo NEGATIVO !')
+                }
 
             } catch (error) {
                 console.error('Error:', error);
+                navigate('/saldos')
             }
         }
-        navigate('/')
     }
 
     // llamo las a las funciones necesarias al cargar el componente
@@ -68,7 +76,7 @@ export const ComponenteCobrarSaldo = () => {
 
     // vista
     return (
-        <div className="form"> 
+        <div className="form">
             <h2>Cobrar Saldo</h2>
             <form onSubmit={cobrarSaldo} className="formulario">
                 <div>
@@ -102,7 +110,7 @@ export const ComponenteCobrarSaldo = () => {
                     />
                 </div>
 
-                <button type="submit" className="btn btn-primary">Store</button>
+                <button type="submit" className="btn btn-primary">Cobrar</button>
             </form>
         </div>
     )
