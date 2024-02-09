@@ -2,7 +2,6 @@
 import UserModel from "../../models/UserModel.js";
 import express from "express";
 var router = express.Router();
-import session from "express-session";
 
 //var usuariosModel = require('./../../models/usuariosModels')
 
@@ -27,13 +26,14 @@ router.get('/logout', function (req, res, next) {
 
 router.post('/', async (req, res) => {
   try {
+    // consulta los usuarios de la bd
     const User = await UserModel.findOne({
       where: {
         usuario: req.body.usuario,
         password: req.body.password
       }
     });
-    
+    // Acceso o no
     if (User !== null) {
       console.log(User);
       /* req.session.id = User.id; */

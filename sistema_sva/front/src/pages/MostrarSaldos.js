@@ -55,8 +55,8 @@ const ComponenteMostrarSaldos = () => {
                                     <td>{saldo.cliente.nombre}</td>
                                     <td>{saldo.saldo}</td>
                                     <td>
-                                        <Link to={`/editar/${saldo.id}`} className='btn btn-info'><i class="fa-solid fa-pen-to-square"></i> </Link>
-                                        <button onClick={() => borrarSaldo(saldo.id)} className='btn btn-danger'><i class="fa-solid fa-trash"></i></button>
+                                       {/*  <Link to={`/editar/${saldo.id}`} className='btn btn-info'><i class="fa-solid fa-pen-to-square"></i> </Link>
+                                        <button onClick={() => borrarSaldo(saldo.id)} className='btn btn-danger'><i class="fa-solid fa-trash"></i></button> */}
                                         <Link to={`/cobrar/${saldo.id}`} className='btn btn-info'> Cobrar <i class="fa-solid fa-sack-dollar"></i> </Link>
                                     </td>
 

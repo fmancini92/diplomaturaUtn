@@ -1,5 +1,7 @@
 import express from 'express'
-import { createCuenta, deleteCuenta, getAllCuentas, getCuenta, updateCuenta } from '../controllers/Cc_SvaController.js'
+import { createCuenta, deleteCuenta, 
+    getAllCuentas, getCuenta, updateCuenta } from 
+    '../controllers/Cc_SvaController.js'
 const router = express.Router()
 
 
