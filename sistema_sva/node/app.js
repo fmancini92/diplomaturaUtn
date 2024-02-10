@@ -1,7 +1,7 @@
 import express, { Router } from 'express'
 import cors from 'cors'
 import db from './database/db.js'
-import router from './routes/routes.js'
+import routesCC from './routes/routesCC.js'
 import routerClientes from './routes/routesClientes.js'
 import path from 'path'
 import cookieParser from 'cookie-parser'
@@ -10,6 +10,7 @@ import session from 'express-session'
 import { fileURLToPath } from 'url';
 import contacto from './routes/admin/contacto.js'
 import usersRoutes from './routes/usersRoutes.js'
+import usuariosRoutes from "./routes/usuariosRoutes.js"
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -37,9 +38,10 @@ app.use(cors())
 
 /* app.use('/', loginRouter); */
 app.use('/usuarios', usersRoutes)
-app.use('/cuentas/', router)
+app.use('/cuentas/', routesCC)
 app.use('/clientes/', routerClientes)
 app.use('/contacto', contacto)
+app.use('/usuarios',usuariosRoutes)
 
 try {
   await db.authenticate()

@@ -1,9 +1,33 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 import '../../styles/components/layout/Nav.css';
 
-const NavBar = ({ user, logout }) => {
-    return (
+
+
+const Logout = () => {
+
+    // Eliminar un elemento del localStorage
+    localStorage.removeItem('usuario');
+
+    // Verificar si se eliminó correctamente
+    const nombre = localStorage.getItem('usuario');
+    console.log(nombre); // Debería imprimir "null" ya que el elemento 'nombre' fue eliminado
+
+    
+
+}
+
+
+
+const NavBar = (props) => {
+
+    const userString = localStorage.getItem('usuario');
+    const user = userString ? JSON.parse(userString) : null
+    
+
+        
+      
+        return (
         <>
             {user && (
                 <nav className="menu">
@@ -22,11 +46,15 @@ const NavBar = ({ user, logout }) => {
                             <NavLink className={({ isActive }) => (isActive ? "active" : null)} to="/usuarios">Usuarios</NavLink>
                         </>
                     )}
-                    <NavLink className={({ isActive }) => (isActive ? "active" : null)} to="/login" onClick={logout}>Salir</NavLink>
+                    <NavLink className={({ isActive }) => (isActive ? "active" : null)} to="http://localhost:3000/login" onClick={Logout}>Salir</NavLink>
                 </nav>
             )}
         </>
     );
+
+
 }
 
-export default NavBar;
+
+
+export default NavBar
